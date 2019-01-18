@@ -1,0 +1,35 @@
+{
+   "name": "ABC, Inc.",
+   "address": "12345 Main Street; Cityville, CA",
+   "phone": "(112) 358-1321",
+   "fax": "(314) 159-2653",
+   "mainUrl": "https: //abcinc.com",
+   "employmentUrl": "https: //abcinc.com/careers",
+   "description": "ABC makes products and offers services.",
+   "techPub": "Yes",
+   "training": "No",
+   "marketing": "Needed",
+   "managers": [
+      {
+         "name": "Jane Thomas",
+         "title": "Director of Technical Communication",
+         "contactInfo": "jane.thomas@abcinc.com",
+         "reponsibilities": "Directs team of technical writers."
+      },
+      {
+         "name": "Thomas Jane",
+         "title": "Manager of Technical Communication",
+         "contactInfo": "tom.jane@abcinc.com",
+         "reponsibilities": "Manages team of technical writers."
+      }
+   ],
+   "tools": [
+      "DITA",
+      "MadCap Flare"
+   ],
+   "global": true,
+   "credentials": [
+      "STC Practitioner Certificate",
+      "STC Expert Certificate"
+   ]
+}
