@@ -9,7 +9,7 @@ router.get('/:resource', (req, res) => {
 	const controller = controllers[resource]
 
 	if (controller == null){
-		res.status(404).json({ ERROR: 'Resource not found' })
+		res.status(404).json({ ERROR: 'Resource Not Found' })
 		return
 	}
 
@@ -30,7 +30,7 @@ router.get('/:resource/:id', (req, res) => {
 	const controller = controllers[resource]
 
 	if (controller == null){
-		res.status(404).json({ ERROR: 'Resource not found' })
+		res.status(404).json({ ERROR: 'Resource Not Found' })
 		return
 	}
 
@@ -53,7 +53,7 @@ router.post('/:resource', (req, res) => {
 	const controller = controllers[resource]
 
 	if (controller == null){
-		res.status(404).json({ ERROR: 'Resource not found' })
+		res.status(404).json({ ERROR: 'Resource Not Found' })
 		return
 	}
 
@@ -71,7 +71,7 @@ router.put('/:resource/:id', (req, res) => {
 	const controller = controllers[resource]
 
 	if (controller == null){
-		res.status(404).json({ ERROR: 'Resource not found' })
+		res.status(404).json({ ERROR: 'Resource Not Found' })
 		return
 	}
 
@@ -89,13 +89,13 @@ router.delete('/:resource/:id', (req, res) => {
 	const controller = controllers[resource]
 
 	if (controller == null){
-		res.status(404).json({ ERROR: 'Resource not found' })
+		res.status(404).json({ ERROR: 'Resource Not Found' })
 		return
 	}
 
 	controller.delete(req.params.id)
 	.then(data => {
-		res.status(204).json(data)
+		res.status(205).json(data)
 	})
 	.catch(err => {
 		res.status(400).json({ ERROR: err.message })
