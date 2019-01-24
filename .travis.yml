@@ -11,4 +11,4 @@ before_script:
   - newman --version
 
 script:
-  - newman run https://www.getpostman.com/collections/ee4ec5013cad27877145?apikey=8dd4ba32ce834aeb96f91b0034816cf9
+  - newman run https://www.getpostman.com/collections/ee4ec5013cad27877145?apikey=8dd4ba32ce834aeb96f91b0034816cf9 --color on
