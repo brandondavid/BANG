@@ -29,5 +29,9 @@ router.get('/redirect', (req, res) => {
 	res.redirect('https://www.turbo360.co/landing')
 })
 
+router.get('/redoc', (req, res) => {
+	res.render('redoc', {text: 'ReDoc!'})
+})
+
 
 module.exports = router
