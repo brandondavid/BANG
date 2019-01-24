@@ -24,4 +24,6 @@ const api = require('./routes/api')
 app.use('/', index)
 app.use('/api', api)
 
+app.use('/redoc', redoc)
+
 module.exports = app
