@@ -21,9 +21,10 @@
 			<div class="row">
 				<div class="col-md-6 col-md-offset-0">
 					<div style="text-align:left;background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px">
-						<h4>Documentation</h4>
+						<h4>Project</h4>
 						<ul style="padding-left:16px">
-							<li><a href="https://github.com/brandondavid/BANGdocs/blob/master/README.md">BANGdocs</a></li>
+							<li><a href="https://github.com/brandondavid/BANG/blob/master/README.md">Architecture</a></li>
+							<li><a href="https://github.com/brandondavid/BANG/blob/master/README.md">Roadmap</a></li>
 							<li><a href="https://brandondavid.github.io/BANGdocs/">ReDoc</a></li>
 							<li><a href="https://github.com/brandondavid/BANGdocs/blob/master/spec/openapi.yaml">OpenAPI (YAML)</a></li>
 						</ul>
@@ -32,43 +33,15 @@
 
 				<div class="col-md-6">
 					<div style="text-align:left;background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px">
-						<h4>API Route</h4>
+						<h4>Documentation</h4>
 						<ul style="padding-left:16px;">
-							<li><a href="/api/company">List of companies (JSON)</a></li>
+							<li><a href="/api/company">ReDoc</a></li>
 							<li><a href="https://cors-anywhere.herokuapp.com/https://bang-jmbzuf.turbo360-vertex.com/api/company">COR request</a></li>
 							<li><a href="/api/profile/lebron_james">With ID</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
-
-			<h3 style="margin-top:48px">Static Assets</h3>
-			<hr />
-			<p>
-				Static assets (images, js, css, etc) are located in the "public" directory. The image below is rendered from the 'images' directory of the public folder:
-				<br /><br />
-				<img style="background:#f9f9f9;padding:6px" src="/images/turbo.png" />
-				<br /><br />
-				When deployed on Turbo Vertex, static assets are <em>automatically</em> distributed to a global CDN so there is no need to set that up. If you decide to eject and deploy this project on your own architecture, you will have to configure a CDN distribution (or at least you should).
-			</p>
-
-			<h3 style="margin-top:48px">Deployment</h3>
-			<hr />
-			<p>
-				To deploy, connect the project to a Turbo 360 project using the APP_ID (from root directory):
-<pre style="text-align:left;margin-top:8px;background:#333;color:#fff">
-<code>$ turbo app APP_ID</code>
-</pre>
-
-				Then deploy by simply entering the deploy command:
-<pre style="text-align:left;margin-top:8px;background:#333;color:#fff">
-<code>$ turbo deploy</code>
-</pre>
-
-				When deployment is complete, you will see a live link where you can access the project on the internet!
-			</p>
-
-
 		</div>
 	</div>
 
