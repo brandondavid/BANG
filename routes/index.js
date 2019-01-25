@@ -15,7 +15,7 @@ router.get('/docs', (req, res) => {
 })
 
 router.get('/redoc', (req, res) => {
-	res.render('redoc', {text: 'REDOC!!'})
+	res.render('redoc')
 })
 
 
