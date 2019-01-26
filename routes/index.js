@@ -11,11 +11,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/docs', (req, res) => {
-	res.redirect('/redoc')
-})
-
-router.get('/redoc', (req, res) => {
-	res.render('redoc')
+	res.render('docs')
 })
 
 
