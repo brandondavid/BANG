@@ -3,6 +3,8 @@ const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 const router = vertex.router()
 const controllers = require('../controllers')
 
+
+//get
 router.get('/:resource', (req, res) => {
 	const resource = req.params.resource
 	const filters = req.query
@@ -24,6 +26,7 @@ router.get('/:resource', (req, res) => {
 	})
 })
 
+//getById
 router.get('/:resource/:id', (req, res) => {
 	const resource = req.params.resource
 	const id = req.params.id
@@ -48,6 +51,32 @@ router.get('/:resource/:id', (req, res) => {
 	})
 })
 
+//getPropertyById
+router.get('/:resource/:id/:property', (req, res) => {
+	const resource = req.params.resource
+	const id = req.params.id
+	const controller = controllers[resource]
+
+	if (controller == null){
+		res.status(404).json({ ERROR: 'Resource Not Found' })
+		return
+	}
+
+	controller.getPropertyById(id, property)
+	.then(data => {
+		if (data){
+			res.status(200).json(data)
+		}
+		else {
+			res.status(404).json({ ERROR: 'Property not found' })
+		}
+	})
+	.catch(err => {
+		res.status(400).json({ ERROR: err.message})
+	})
+})
+
+//post
 router.post('/:resource', (req, res) => {
 	const resource = req.params.resource
 	const controller = controllers[resource]
@@ -66,6 +95,7 @@ router.post('/:resource', (req, res) => {
 	})
 })
 
+//put
 router.put('/:resource/:id', (req, res) => {
 	const resource = req.params.resource
 	const controller = controllers[resource]
@@ -84,6 +114,7 @@ router.put('/:resource/:id', (req, res) => {
 	})
 })
 
+//delete
 router.delete('/:resource/:id', (req, res) => {
 	const resource = req.params.resource
 	const controller = controllers[resource]
