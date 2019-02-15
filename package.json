@@ -29,7 +29,7 @@
     "kerberos": "^1.1.2",
     "merge-descriptors": "1.0.1",
     "methods": "^1.1.2",
-    "mongodb": "^3.2.0",
+    "mongodb": "^3.2.22",
     "newman": "^4.3.1",
     "node-gyp": "^3.8.0",
     "nodemon": "^1.18.9",
