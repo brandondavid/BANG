@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "",
-    "build": ""
+    "build": "",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "dependencies": {
     "accepts": "^1.3.5",
@@ -55,5 +56,6 @@
   "deploy": [
     "."
   ],
-  "format": "vertex"
+  "format": "vertex",
+  "heroku-run-build-script": true
 }
