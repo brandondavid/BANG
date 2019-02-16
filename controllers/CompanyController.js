@@ -26,9 +26,9 @@ module.exports = {
         })
     },
 
-    getPropertyById: (id) => {
+    getPropertyById: (id, params) => {
         return new Promise((resolve, reject) => {
-            Company.findById(id)
+            Company.findById(id, params)
             .then(data => {
                 resolve(data)
             })
