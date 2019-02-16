@@ -50,6 +50,16 @@ router.get('/:resource/:id', (req, res) => {
 	})
 })
 
+//test
+router.get('/:resource/:id/:property', (req, res) => {
+	const resource = req.params.resource
+	const id = req.params.id
+	const property = req.params.property
+	const controller = controllers[resource]
+
+	res.status(404).json({ ERROR: 'TEST' })
+})
+
 //post
 router.post('/:resource', (req, res) => {
 	const resource = req.params.resource
