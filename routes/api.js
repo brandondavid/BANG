@@ -34,7 +34,7 @@ router.get('/:resource/:id', (req, res) => {
 
 	controller.getById(req.params.id)
 	.then(data => {
-		if (data.length){
+		if (data){
 			res.status(200).json(data)
 		}
 		else {
