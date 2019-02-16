@@ -6,7 +6,6 @@ const controllers = require('../controllers')
 //get
 router.get('/:resource', (req, res) => {
 	const resource = req.params.resource
-	const filters = req.query
 	const controller = controllers[resource]
 
 	if (controller == null){
@@ -14,7 +13,7 @@ router.get('/:resource', (req, res) => {
 		return
 	}
 
-	controller.get(filters)
+	controller.get(req.query)
 	.then(data => {
 		res.status(200).json(data)
 	})
@@ -26,7 +25,6 @@ router.get('/:resource', (req, res) => {
 //getById
 router.get('/:resource/:id', (req, res) => {
 	const resource = req.params.resource
-	//const id = req.params.id
 	const controller = controllers[resource]
 
 	if (controller == null){
@@ -48,11 +46,9 @@ router.get('/:resource/:id', (req, res) => {
 	})
 })
 
-//test
+//getPropertyById
 router.get('/:resource/:id/:property', (req, res) => {
 	const resource = req.params.resource
-	const id = req.params.id
-	const property = req.params.property
 	const controller = controllers[resource]
 
 	if (controller == null){
@@ -60,7 +56,7 @@ router.get('/:resource/:id/:property', (req, res) => {
 		return
 	}
 
-	controller.get(id, property)
+	controller.getPropertyById(req.params.id, req.params.property)
 	.then(data => {
 		res.status(200).json(data)
 	})
