@@ -50,7 +50,7 @@ router.get('/:resource/:id', (req, res) => {
 	})
 })
 
-//getPropertyById
+/*//getPropertyById
 router.get('/:resource/:id/:property', (req, res) => {
 	const resource = req.params.resource
 	const id = req.params.id
@@ -74,7 +74,7 @@ router.get('/:resource/:id/:property', (req, res) => {
 	.catch(err => {
 		res.status(400).json({ ERROR: err.message})
 	})
-})
+})*/
 
 //post
 router.post('/:resource', (req, res) => {
