@@ -16,8 +16,6 @@ router.get('/:resource', (req, res) => {
 
 	controller.get(filters)
 	.then(data => {
-		//res.setHeader("Access-Control-Allow-Origin", "*");
-		//res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 		res.status(200).json(data)
 	})
 	.catch(err => {
@@ -28,7 +26,7 @@ router.get('/:resource', (req, res) => {
 //getById
 router.get('/:resource/:id', (req, res) => {
 	const resource = req.params.resource
-	const id = req.params.id
+	//const id = req.params.id
 	const controller = controllers[resource]
 
 	if (controller == null){
@@ -36,7 +34,7 @@ router.get('/:resource/:id', (req, res) => {
 		return
 	}
 
-	controller.getById(id)
+	controller.getById(req.params.id)
 	.then(data => {
 		if (data){
 			res.status(200).json(data)
@@ -46,7 +44,7 @@ router.get('/:resource/:id', (req, res) => {
 		}
 	})
 	.catch(err => {
-		res.status(400).json({ ERROR: err.message})
+		res.status(400).json({ ERROR: err.message })
 	})
 })
 
@@ -57,7 +55,18 @@ router.get('/:resource/:id/:property', (req, res) => {
 	const property = req.params.property
 	const controller = controllers[resource]
 
-	res.status(404).json(req.params.property)
+	if (controller == null){
+		res.status(404).json({ ERROR: 'Resource Not Found' })
+		return
+	}
+
+	controller.get(id, property)
+	.then(data => {
+		res.status(200).json(data)
+	})
+	.catch(err => {
+		res.status(400).json({ ERROR: err.message })
+	})
 })
 
 //post
