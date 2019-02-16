@@ -26,6 +26,18 @@ module.exports = {
         })
     },
 
+    getPropertyById: (id) => {
+        return new Promise((resolve, reject) => {
+            Company.findById(id)
+            .then(data => {
+                resolve(data)
+            })
+            .catch(err => {
+                reject(err)
+            })
+        })
+    },
+
     post: (params) => {
         return new Promise((resolve, reject) => {
             Company.create(params)
