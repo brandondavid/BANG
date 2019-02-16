@@ -58,7 +58,7 @@ router.get('/:resource/:id/:property', (req, res) => {
 
 	controller.getPropertyById(req.params.id, req.params.property)
 	.then(data => {
-		if (Object.entries(data).length){
+		if (data.hasOwnProperty(req.params.property)){
 			res.status(200).json(data)
 		}
 		else {
