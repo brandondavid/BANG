@@ -3,7 +3,6 @@ const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 const router = vertex.router()
 const controllers = require('../controllers')
 
-
 //get
 router.get('/:resource', (req, res) => {
 	const resource = req.params.resource
@@ -55,6 +54,7 @@ router.get('/:resource/:id', (req, res) => {
 router.get('/:resource/:id/:property', (req, res) => {
 	const resource = req.params.resource
 	const id = req.params.id
+	const property = req.params.property
 	const controller = controllers[resource]
 
 	if (controller == null){
