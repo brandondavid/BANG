@@ -58,8 +58,8 @@ router.get('/:resource/:id/:property', (req, res) => {
 
 	controller.getPropertyById(req.params.id, req.params.property)
 	.then(data => {
-		if (data != null){
-			res.status(200).json(data)
+		if (data ){
+			res.status(200).json(typeof data)
 		}
 		else {
 			res.status(404).json({ ERROR: 'Property not found' })
