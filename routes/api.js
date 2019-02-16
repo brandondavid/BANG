@@ -57,7 +57,7 @@ router.get('/:resource/:id/:property', (req, res) => {
 	const property = req.params.property
 	const controller = controllers[resource]
 
-	res.status(404).json(params)
+	res.status(404).json(req.params)
 })
 
 //post
