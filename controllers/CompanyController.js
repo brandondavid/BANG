@@ -28,9 +28,9 @@ module.exports = {
 
     getPropertyById: (id, property) => {
         return new Promise((resolve, reject) => {
-            Company.findById(id)
+            Company.findById(id, property)
             .then(data => {
-                resolve(data.property)
+                resolve(data)
             })
             .catch(err => {
                 reject(err)
