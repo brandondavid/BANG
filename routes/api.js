@@ -58,7 +58,12 @@ router.get('/:resource/:id/:property', (req, res) => {
 
 	controller.getPropertyById(req.params.id, req.params.property)
 	.then(data => {
-		res.status(200).json(data)
+		if (data){
+			res.status(200).json(data)
+		}
+		else {
+			res.status(404).json({ ERROR: 'Property not found' })
+		}
 	})
 	.catch(err => {
 		res.status(400).json({ ERROR: err.message })
