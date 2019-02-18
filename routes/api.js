@@ -125,7 +125,7 @@ router.put('/:resource/:id/:property', (req, res) => {
 	const obj = {}
 	obj[req.params.property] = req.body
 
-	controller.putPropertyById(req.params.id, obj)
+	controller.putPropertyById(req.params.id, {[req.params.property]: req.body})
 	.then(data => {
 		res.status(201).json(data)
 	})
