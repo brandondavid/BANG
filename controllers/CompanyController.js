@@ -62,6 +62,18 @@ module.exports = {
         }) 
     },
 
+    putPropertyById: (id, params) => {
+        return new Promise((resolve, reject) => {
+            Company.findByIdAndUpdate(id, params, {new:true})
+            .then(data => {
+                resolve(data)
+            })
+            .catch(err => {
+                reject(err)
+            })
+        }) 
+    },
+
     delete: (id) => {
         return new Promise((resolve, reject) => {
             Company.findByIdAndDelete(id)
