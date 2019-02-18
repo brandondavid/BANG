@@ -121,7 +121,11 @@ router.put('/:resource/:id/:property', (req, res) => {
 		res.status(404).json({ ERROR: 'Resource Not Found' })
 		return
 	}
-	controller.putPropertyById(req.params.id, {req.params.property: req.body})
+
+	const obj = {}
+	obj[req.params.property] = req.body
+
+	controller.putPropertyById(req.params.id, obj)
 	.then(data => {
 		res.status(201).json(data)
 	})
