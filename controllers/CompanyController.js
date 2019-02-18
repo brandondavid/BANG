@@ -64,7 +64,7 @@ module.exports = {
 
     putPropertyById: (id, params) => {
         return new Promise((resolve, reject) => {
-            Company.findByIdAndUpdate(id, params, {new:true})
+            Company.findByIdAndUpdate(id, {$set: params}, {new:true})
             .then(data => {
                 resolve(data)
             })
