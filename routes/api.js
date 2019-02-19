@@ -130,4 +130,20 @@ router.put('/:resource/:id/:property', (req, res) => {
 	})
 })
 
+router.delete('/:resource/:id/:property', (req, res) => {
+	const resource = req.params.resource
+	const controller = controllers[resource]
+	if (controller == null){
+		res.status(404).json({ ERROR: 'Resource Not Found' })
+		return
+	}
+	controller.deletePropertyById(req.params.id, req.params.property)
+	.then(data => {
+		res.status(205).json(data)
+	})
+	.catch(err => {
+		res.status(400).json({ ERROR: err.message })
+	})
+})
+
 module.exports = router
