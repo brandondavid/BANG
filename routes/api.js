@@ -137,7 +137,7 @@ router.delete('/:resource/:id/:property', (req, res) => {
 		res.status(404).json({ ERROR: 'Resource Not Found' })
 		return
 	}
-	controller.deletePropertyById(req.params.id, req.params.property)
+	controller.putPropertyById(req.params.id, {[req.params.property]: null})
 	.then(data => {
 		res.status(205).json(data)
 	})
