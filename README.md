@@ -4,7 +4,6 @@
 ## Development
 This is an unofficial prototype for the Bay Area Networking Guide (BANG).  It is fully functional, though populated with placeholder data and not deployed to a production environment.  Further, the NoSQL database used is likely a poor fit and the database schema itself could use considerable development.  There is no frontend or much in the way of input validation, as the primary purpose of the prototype was to raise a fully functional API as something unique to be documented.
 
-
 ### Specification
 A sketch of the minimum specification is given [here](http://www.synergistech.com/bang-leader.html):
 > - the company's name, physical address, switchboard telephone and main fax numbers, main and employment-related URLs, and a brief description of its products and/or services
@@ -52,18 +51,51 @@ Following that specification in an overly literal way, gives us:
        ]
     }
 ```
-(https://raw.githubusercontent.com/brandondavid/BANG/master/seed/company.json)
-
-Of course, it would be far preferable to have Managers, Tools, and Credentials as their own data structures so that they could be used independently of any company.  This would also imply that a better backend would involve a RDBMS.
+It would be preferable to have Managers, Tools, and Credentials as their own data structures so that they could be used independently of any company.  This implies that a better backend would involve a RDBMS.
 
 ## Architecture
+- Written in Node.js with templating done in Mustache.
+- Express.js is used as a web application framework, greatly facilitating RESTfulness.
 - The database is a MongoDB sandbox hosted on AWS through mLab.
-- Express.js is used as a web application framework, which greatly facilitates the webapp being RESTful, which makes it easy to have a REST API.
-- The API itself is written in Node.js, which means BANG is most of the way to using the classic MEAN (or MERN) stack.  However, the templating engine is simply Mustache to avoid unnecessary overhead.
-- The entire application is deployed on Heroku and available at [https://bay-area-networking-guide.herokuapp.com](https://bay-area-networking-guide.herokuapp.com)
+- The webapp is hosted on Heroku and available at [https://bay-area-networking-guide.herokuapp.com](https://bay-area-networking-guide.herokuapp.com).
 
 ## Data Generation
-- Placeholder data was generated using [this template](https://github.com/brandondavid/BANG/blob/master/seed/json-generator.md) with Vazha Omanashvili's [JSON Generator](https://www.json-generator.com).
+- Placeholder data was generated using the following template:
+```
+[
+  '{{repeat(99)}}',
+  {
+     name: '{{company()}}',
+     address: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+     phone: '{{phone()}}',
+     fax: '{{phone()}}',
+     mainUrl: 'http://www.{{lorem(1, "words")}}.com',
+     employmentUrl: 'http://www.{{lorem(1, "words")}}.com',
+     description: '{{lorem(1, "paragraphs")}}',
+     technicalPub: '{{random("Yes", "No", "Needed")}}',
+     training: '{{random("Yes", "No", "Needed")}}',
+     marketing: '{{random("Yes", "No", "Needed")}}',
+     managers:[
+        '{{repeat(1, 3)}}',
+        {
+           name: '{{firstName()}} {{surname()}}',
+           title: 'Manager of {{lorem(2, "words")}}',
+           contactInfo: '{{email()}}',
+           reponsibilities: 'Responsibilities include {{lorem(2, "words")}} and {{lorem(2, "words")}}'
+        }
+     ],
+     tools:[
+        '{{repeat(1, 5)}}',
+        '{{lorem(1, "words")}}'
+     ],
+     global: '{{bool()}}',
+     credentials:[
+        '{{repeat(1, 3)}}',
+        '{{lorem(2, "words")}} Certificate'
+     ]
+  }
+]
+```
 
 ## Testing and CI/CD
 - Testing is done through a Postman collection, which is called via Newman during CI/CD.
@@ -71,6 +103,6 @@ Of course, it would be far preferable to have Managers, Tools, and Credentials a
 
 ## Roadmap
 - Migrate to a relational database  
-- Raise more endpoints (e.g. /tool, /credential, /manager)
+- Raise more endpoints (e.g. `/tool`, `/credential`, `/manager`)
 - Authentication
 - Develop frontend
