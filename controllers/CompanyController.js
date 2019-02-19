@@ -84,7 +84,7 @@ module.exports = {
                 reject(err)
             })
         }) 
-    }
+    },
 
     deletePropertyById: (id, params) => {
         return new Promise((resolve, reject) => {
