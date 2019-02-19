@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.com/brandondavid/BANG.svg?branch=master)](https://travis-ci.com/brandondavid/BANG)
 
 ## Development
-This is an unofficial prototype for the Bay Area Networking Guide (BANG).  It is fully functional, though populated with placeholder data and not deployed to a production environment.  Further, the NoSQL database used is likely a poor fit and the database schema itself could use considerable development.  There is no frontend or much in the way of input validation, as the primary purpose of the prototype was to raise a fully functional API as something unique to be documented.
+This is an unofficial prototype for the Bay Area Networking Guide (BANG).  It is fully functional, though populated with placeholder data and not deployed to a production environment.  Further, the NoSQL database used is likely a poor fit and the database schema itself could use considerable development.  There is no frontend or much in the way of input validation, as the primary purpose of the prototype was to raise a functioning API as something unique to be documented.
 
 ### Specification
 A sketch of the minimum specification is given [here](http://www.synergistech.com/bang-leader.html):
@@ -13,7 +13,7 @@ A sketch of the minimum specification is given [here](http://www.synergistech.co
 > - whether the company creates content for a global audience
 > - the credentials the company typically seeks in its candidates
 
-Following that specification in an overly literal way, gives us:
+The template record below follows that specification in an overly literal fashion.  Certainly, it would be preferable to have `Managers`, `Tools`, and `Credentials` as their own data structures so they could be independent of `Company`, which implies that a better backend would involve an RDBMS.
 ```
     {
        "name": "ABC, Inc.",
@@ -51,16 +51,47 @@ Following that specification in an overly literal way, gives us:
        ]
     }
 ```
-It would be preferable to have Managers, Tools, and Credentials as their own data structures so that they could be used independently of any company.  This implies that a better backend would involve a RDBMS.
+
+The above template record was used to specify the following Mongoose model specification:
+```
+const InHouse = {
+    type: String, 
+    enum: ['Yes', 'No', 'Needed']
+}
+
+const Manager = new mongoose.Schema({
+    name: {type:String, default:''},
+    title: {type:String, default:''},         //title
+    contactInfo: {type:String, default:''},   //contact information
+    reponsibilities: [String]                 //key responsibilities
+})
+
+const Company = new mongoose.Schema({
+    name: {type:String, required:true},       //company's name
+    address: {type:String, default:''},       //physical address
+    phone: {type:String, default:''},         //switchboard telephone number
+    fax: {type:String, default:''},           //main fax number
+    mainUrl: {type:String, default:''},       //main URL
+    employmentUrl: {type:String, default:''}, //employment-related URL
+    description: {type:String, default:''},   //brief description of products/services
+    techPub: InHouse,                         //in-house technical publications
+    training: InHouse,                        //in-house training
+    marketing: InHouse,                       //in-house marketing communications service
+    managers: [Manager],                      //technical communications managers
+    tools: [String],                          //tools used in technical communications department(s)
+    global: {type:Boolean, default:false},    //whether the company creates content global audiences
+    credentials: [String]                     //credentials the company typically seeks in its candidates
+})
+```
 
 ## Architecture
-- Written in Node.js with templating done in Mustache.
+- Written in Node.js, with templating done in Mustache for simplicity.
 - Express.js is used as a web application framework, greatly facilitating RESTfulness.
-- The database is a MongoDB sandbox hosted on AWS through mLab.
+- The database is a MongoDB sandbox hosted on AWS through mLab, accessed through the Mongoose API.
 - The webapp is hosted on Heroku and available at [https://bay-area-networking-guide.herokuapp.com](https://bay-area-networking-guide.herokuapp.com).
 
 ## Data Generation
-- Placeholder data was generated using the following template:
+Placeholder data was generated using the following template:
 ```
 [
   '{{repeat(99)}}',
