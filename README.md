@@ -63,7 +63,7 @@ Of course, it would be far preferable to have Managers, Tools, and Credentials a
 - The entire application is deployed on Heroku and available at [https://bay-area-networking-guide.herokuapp.com](https://bay-area-networking-guide.herokuapp.com)
 
 ## Data Generation
-Placeholder data was generated using [this template](https://github.com/brandondavid/BANG/blob/master/seed/json-generator.md) on Vazha Omanashvili's [JSON Generator](https://www.json-generator.com).
+- Placeholder data was generated using [this template](https://github.com/brandondavid/BANG/blob/master/seed/json-generator.md) with Vazha Omanashvili's [JSON Generator](https://www.json-generator.com).
 
 ## Testing and CI/CD
 - Testing is done through a Postman collection, which is called via Newman during CI/CD.
