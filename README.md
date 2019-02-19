@@ -1,10 +1,8 @@
 # Bay Area Networking Guide (BANG)
 [![Build Status](https://travis-ci.com/brandondavid/BANG.svg?branch=master)](https://travis-ci.com/brandondavid/BANG)
 
-## Development History
-A prototype implementation of [this spec](http://www.synergistech.com/bang-leader.html)
-
-This documentation is for a prototype build of the Bay Area Networking Guide (BANG).  It is fully functional, though populated with placeholder data and not deployed to a production environment.  Further, the NoSQL database used is likely a poor fit and the database schema itself could use considerable development.  There is no frontend or much in the way of input validation, as the primary purpose of the prototype was to raise a fully functional API as something unique to be documented.
+## Development
+This is an unofficial prototype for the Bay Area Networking Guide (BANG).  It is fully functional, though populated with placeholder data and not deployed to a production environment.  Further, the NoSQL database used is likely a poor fit and the database schema itself could use considerable development.  There is no frontend or much in the way of input validation, as the primary purpose of the prototype was to raise a fully functional API as something unique to be documented.
 
 
 ### Specification
@@ -59,27 +57,20 @@ Following that specification in an overly literal way, gives us:
 Of course, it would be far preferable to have Managers, Tools, and Credentials as their own data structures so that they could be used independently of any company.  This would also imply that a better backend would involve a RDBMS.
 
 ## Architecture
-The database is a MongoDB sandbox hosted on AWS through mLab.
-
-Express.js is used as a web application framework, which greatly facilitates the webapp being RESTful, which makes it easy to have a REST API.
-
-The API itself is written in Node.js, which means BANG is most of the way to using the classic MEAN (or MERN) stack.  However, the templating engine is simply Mustache to avoid unnecessary overhead.
-
-The entire application is deployed on Heroku and available at [https://bay-area-networking-guide.herokuapp.com](https://bay-area-networking-guide.herokuapp.com)
+- The database is a MongoDB sandbox hosted on AWS through mLab.
+- Express.js is used as a web application framework, which greatly facilitates the webapp being RESTful, which makes it easy to have a REST API.
+- The API itself is written in Node.js, which means BANG is most of the way to using the classic MEAN (or MERN) stack.  However, the templating engine is simply Mustache to avoid unnecessary overhead.
+- The entire application is deployed on Heroku and available at [https://bay-area-networking-guide.herokuapp.com](https://bay-area-networking-guide.herokuapp.com)
 
 ## Data Generation
 Placeholder data was generated using [this template](https://github.com/brandondavid/BANG/blob/master/seed/json-generator.md) on Vazha Omanashvili's [JSON Generator](https://www.json-generator.com).
 
-The output required some cleanup, using the Python script located at LINK
-
-
-
-## CI/CD
-Postman  
-Travis  
+## Testing and CI/CD
+- Testing is done through a Postman collection, which is called via Newman during CI/CD.
+- CI/CD is done through Travis.
 
 ## Roadmap
-Move to a relational database  
-Raise more endpoints  
-Authentication  
-Frontend  
+- Migrate to a relational database  
+- Raise more endpoints (e.g. /tool, /credential, /manager)
+- Authentication
+- Develop frontend
