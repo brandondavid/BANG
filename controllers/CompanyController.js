@@ -86,4 +86,15 @@ module.exports = {
         }) 
     }
 
+    deletePropertyById: (id, params) => {
+        return new Promise((resolve, reject) => {
+            Company.findByIdAndDelete(id, params)
+            .then(() => {
+                resolve()
+            })
+            .catch(err => {
+                reject(err)
+            })
+        }) 
+    }
 }
